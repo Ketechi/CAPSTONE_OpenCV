@@ -8,4 +8,4 @@ This project requires the following libraries to work.
 - opencv
 - pip
 
-The current IDE I am using for the roject is Pycharm.
+The current IDE I am using is Pycharm.
