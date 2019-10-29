@@ -55,6 +55,10 @@ print(getPixelBGR())
 cap = cv2.VideoCapture(1)
 
 while True:
+    # Grab the values from the sliders
+    event, value = HSV_slider.read(timeout=1)
+    eventD, valueD = Draw_slider.read(timeout=1)
+
     # Start capturing the frames from the video source
     extra, frames = cap.read()
 
@@ -82,6 +86,7 @@ while True:
             cv2.drawContours(frames, contour, -1, (0, 255, 0), 1)
             cv2.circle(frames, (momentumX, momentumY), 2, (0, 255, 0), -1)
             cv2.line(frames, (pyautogui.position()), (momentumX, momentumY), (0, 255, 0), 1, 1)
+            print(pyautogui.position())
             #print(momentumX , momentumY)
 
             # part 3
@@ -93,10 +98,6 @@ while True:
 
     cv2.imshow("Video", frames)
     cv2.imshow("mask", mask)
-
-    # Grab the values from the sliders
-    event, value = HSV_slider.read(timeout=1)
-    eventD, valueD = Draw_slider.read(timeout=1)
 
     # Update HSV based on the slider position & changes occur in real time
     color[0] = int(value['-H-'])
